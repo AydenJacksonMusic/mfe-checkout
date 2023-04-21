@@ -59,6 +59,7 @@ const Checkout: React.FC<Props> = ({
   let paypalPayerId = ""
   let checkoutComSession = ""
   let redirectResult = ""
+  let redirectStatus = ""
 
   if (query.PayerID) {
     paypalPayerId = query.PayerID as string
@@ -72,6 +73,10 @@ const Checkout: React.FC<Props> = ({
     checkoutComSession = query["cko-session-id"] as string
   }
 
+  if (query.redirect_status) {
+    redirectStatus = query.redirect_status as string
+  }
+  
   const { activeStep, lastActivableStep, setActiveStep, steps } =
     useActiveStep()
 
@@ -184,6 +189,7 @@ const Checkout: React.FC<Props> = ({
                         adyen: {
                           redirectResult,
                         },
+                        stripe: { redirectStatus },
                       }}
                     >
                       <AccordionItem

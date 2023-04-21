@@ -8,6 +8,9 @@ import ShippingAmount from "@commercelayer/react-components/orders/ShippingAmoun
 import SubTotalAmount from "@commercelayer/react-components/orders/SubTotalAmount"
 import TaxesAmount from "@commercelayer/react-components/orders/TaxesAmount"
 import TotalAmount from "@commercelayer/react-components/orders/TotalAmount"
+import PaymentMethod from "@commercelayer/react-components/payment_methods/PaymentMethod"
+import PaymentMethodsContainer from "@commercelayer/react-components/payment_methods/PaymentMethodsContainer"
+import PaymentSource from "@commercelayer/react-components/payment_source/PaymentSource"
 import { Trans, useTranslation } from "react-i18next"
 
 import { AppProviderData } from "components/data/AppProvider"
@@ -65,6 +68,11 @@ export const OrderSummary: React.FC<Props> = ({ appCtx, readonly }) => {
   ) : null
   return (
     <Wrapper data-testid="order-summary">
+      <PaymentMethodsContainer>
+        <PaymentMethod expressPayments>
+          <PaymentSource />
+        </PaymentMethod>
+      </PaymentMethodsContainer>
       <LineItemsContainer>
         <>
           {lineItems}
