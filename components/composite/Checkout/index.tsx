@@ -1,6 +1,9 @@
 import CustomerContainer from "@commercelayer/react-components/customers/CustomerContainer"
 import OrderContainer from "@commercelayer/react-components/orders/OrderContainer"
 import PlaceOrderContainer from "@commercelayer/react-components/orders/PlaceOrderContainer"
+import PaymentMethod from "@commercelayer/react-components/payment_methods/PaymentMethod"
+import PaymentMethodsContainer from "@commercelayer/react-components/payment_methods/PaymentMethodsContainer"
+import PaymentSource from "@commercelayer/react-components/payment_source/PaymentSource"
 import { useRouter } from "next/router"
 import { useContext } from "react"
 import styled from "styled-components"
@@ -76,7 +79,7 @@ const Checkout: React.FC<Props> = ({
   if (query.redirect_status) {
     redirectStatus = query.redirect_status as string
   }
-  
+
   const { activeStep, lastActivableStep, setActiveStep, steps } =
     useActiveStep()
 
@@ -130,6 +133,11 @@ const Checkout: React.FC<Props> = ({
                 onStepChange={setActiveStep}
                 lastActivable={lastActivableStep}
               />
+              <PaymentMethodsContainer>
+                <PaymentMethod expressPayments>
+                  <PaymentSource />
+                </PaymentMethod>
+              </PaymentMethodsContainer>
               <Accordion>
                 <AccordionProvider
                   activeStep={activeStep}
