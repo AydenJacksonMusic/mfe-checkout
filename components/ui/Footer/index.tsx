@@ -1,13 +1,13 @@
 import styled from "styled-components"
 import tw from "twin.macro"
 
-import { Logo } from "./cl"
-
 export const Footer: React.FC = () => {
   return (
     <Wrapper>
       <LogoWrapper>
-        <p>&copy; 2023 Ayden Jackson</p>
+        <p>&copy; 2023 Ayden Jackson<br>
+        <a href="https://aydenjackson.com/policies/terms">Terms</a> | <a href="https://aydenjackson.com/policies/privacy">Privacy</a> | <a href="https://aydenjackson.com/policies/returns">Returns</a> | <a href="#">Powered by Influify</a>
+        </p>
       </LogoWrapper>
     </Wrapper>
   )
